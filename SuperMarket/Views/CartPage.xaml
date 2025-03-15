@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SuperMarket.Views.CartPage"
+             xmlns:views="clr-namespace:SuperMarket.Views"
+             Title="Shopping Cart">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Cart Items" FontSize="Large" FontAttributes="Bold" />
+
+        <CollectionView ItemsSource="{Binding CartItems}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,Auto,Auto" Padding="0,10,0,10">
+                        <Label Text="{Binding Product.Name}" FontSize="16" FontAttributes="Bold" Grid.Column="0"/>
+                        <HorizontalStackLayout  Grid.Column="1">
+                            <Button Text="-"  Command="{Binding Source={RelativeSource AncestorType={x:Type views:CartPage}}, Path=BindingContext.DecreaseQuantityCommand}" CommandParameter="{Binding .}" />
+                            <Label Text="{Binding Quantity}" VerticalOptions="Center"/>
+                            <Button Text="+"  Command="{Binding Source={RelativeSource AncestorType={x:Type views:CartPage}}, Path=BindingContext.IncreaseQuantityCommand}" CommandParameter="{Binding .}" />
+                        </HorizontalStackLayout>
+                        <Button Text="Remove" Command="{Binding Source={RelativeSource AncestorType={x:Type views:CartPage}}, Path=BindingContext.RemoveItemCommand}" CommandParameter="{Binding .}" Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label Text="{Binding Message}" />
+        <Label Text="{Binding Total, StringFormat='Total: {0:C}'}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="End"/>
+        <Button Text="Checkout" Command="{Binding CheckoutCommand}" />
+        <Button Text="Clear Cart" Command="{Binding ClearCartCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

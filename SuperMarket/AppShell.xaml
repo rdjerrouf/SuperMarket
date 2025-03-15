@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:SuperMarket.Views"
+       x:Class="SuperMarket.AppShell"
+       Shell.FlyoutBehavior="Disabled">
+
+    <!-- Registration Routes -->
+    <ShellContent 
+        Route="SignInPage"
+        ContentTemplate="{DataTemplate views:SignInPage}"
+        Title="Sign In" />
+
+    <ShellContent 
+        Route="RegistrationPage"
+        ContentTemplate="{DataTemplate views:RegistrationPage}"
+        Title="Register" />
+
+    <!-- Main App Routes -->
+    <TabBar>
+        <Tab Title="Home" Icon="home_icon.png">
+            <ShellContent 
+                Title="Home"
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="MainPage" />
+        </Tab>
+
+        <Tab Title="Shop" Icon="shop_icon.png">
+            <ShellContent 
+                Title="Products"
+                ContentTemplate="{DataTemplate views:ProductPage}"
+                Route="ProductPage" />
+        </Tab>
+
+        <Tab Title="Cart" Icon="cart_icon.png">
+            <ShellContent 
+                Title="Cart"
+                ContentTemplate="{DataTemplate views:CartPage}"
+                Route="CartPage" />
+        </Tab>
+
+        <Tab Title="Orders" Icon="orders_icon.png">
+            <ShellContent 
+                Title="Orders"
+                ContentTemplate="{DataTemplate views:OrderPage}"
+                Route="OrderPage" />
+        </Tab>
+
+        <Tab Title="Profile" Icon="profile_icon.png">
+            <ShellContent 
+                Title="Profile"
+                ContentTemplate="{DataTemplate views:ProfilePage}"
+                Route="ProfilePage" />
+        </Tab>
+    </TabBar>
+</Shell>

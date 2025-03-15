@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SuperMarket.Views.OrderPage"
+             Title="Order History">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Order History" FontSize="Large" FontAttributes="Bold"/>
+
+        <CollectionView ItemsSource="{Binding Orders}" SelectionMode="Single" SelectedItem="{Binding SelectedOrder}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="Gray">
+                        <VerticalStackLayout >
+                            <Label Text="{Binding Id, StringFormat='Order Id: {0}'}" FontSize="16" FontAttributes="Bold" />
+                            <Label Text="{Binding OrderDate, StringFormat='Order Date: {0:g}'}" FontSize="14" />
+                            <Label Text="{Binding TotalAmount, StringFormat='Total: {0:C}'}" FontSize="14"/>
+                            <Label Text="{Binding Status, StringFormat='Status: {0}'}" FontSize="14"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label Text="{Binding Message}" />
+    </VerticalStackLayout>
+</ContentPage>

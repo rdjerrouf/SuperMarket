@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SuperMarket.Views.MainPage"
+             Title="Grocery Store">
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="End">
+            <ImageButton
+            Source="profileicon.png"
+            BackgroundColor="Transparent"
+            HeightRequest="40"
+            WidthRequest="40"
+            Command="{Binding GoToProfileCommand}" />
+        </HorizontalStackLayout>
+        <SearchBar Placeholder="Search products..."
+                   Text="{Binding SearchQuery}"
+                   SearchCommand="{Binding SearchCommand}" />
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="Gray">
+                        <Grid RowDefinitions="Auto,Auto,Auto">
+                            <Image Source="{Binding ImageUrl}"  Aspect="AspectFit" HeightRequest="100" Grid.Row="0" />
+                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold"  Grid.Row="1"/>
+                            <Label Text="{Binding Price, StringFormat='Price: {0:C}'}"  Grid.Row="2"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
